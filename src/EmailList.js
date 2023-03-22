@@ -8,6 +8,7 @@ import { db } from './firebase';
 
 
 
+
 const EmailList = () => {
    
 
@@ -65,11 +66,20 @@ const EmailList = () => {
             <div className="emailList__list">
 
 
-                {
+                {/* {
                     emails.map(({id,data,timestamp})=>{
                         return <EmailRow id={id} key={id} title={data.to} subject={data.subject} description={data.message} time={new Date(timestamp.seconds * 1000).toLocaleString()} />
                     })
+                } */}
+
+                {
+                emails.map(({id,data,timestamp})=>{
+                const time = timestamp ? new Date(timestamp.seconds * 1000).toLocaleString() : "";
+                return <EmailRow id={id} key={id} title={data.to} subject={data.subject} description={data.message} time={time} />
+                    })
                 }
+
+
          
             </div>
         </div>
